@@ -1,5 +1,4 @@
 const express = require('express');
-const http = require('http');
 
 const appHttp11 = express();
 
@@ -11,10 +10,7 @@ appHttp11.get('/', (req, res) => {
     res.send('Hello from HTTP/1.1 server with custom Keep-Alive timeout');
 });
 
-// Create server with HTTP/1.1 (default)
-const serverHttp11 = http.createServer(appHttp11);
-
 // Listen on port 4000
-serverHttp11.listen(4000, () => {
+appHttp11.listen(4000, () => {
     console.log('HTTP/1.1 server is running on http://localhost:4000 with Keep-Alive timeout of 60 seconds');
 });
